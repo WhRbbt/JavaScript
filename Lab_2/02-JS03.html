@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="styles/style.css" type="text/css">
+	<title>02-JS03</title>
+</head>
+<body>
+	<div class="temp m1">...</div>
+	<button onclick="innerHtml()">innerHtml</button>
+	<button onclick="documentWrite()">documentWrite</button>
+	<button onclick="windowAlert()">windowAlert</button>
+	<button onclick="consoleLog()">consoleLog</button>
+
+	<script>
+		function innerHtml()
+		{
+			var sum = 0.1 + 0.2;
+			var result = document.getElementsByClassName("m1")[0];
+			result.innerHTML = "В JS" + "<br>" + " 0.1 + 0.2 = " + sum;
+			result.style.color = '#2d264a';
+		}
+		function documentWrite(){
+			document.write(9+10);
+		}
+		function windowAlert()
+		{
+			window.alert("Важлива інформація!");
+		}
+		function consoleLog()
+		{
+			console.log(20+17);
+		}
+	</script>
+</body>
+</html>

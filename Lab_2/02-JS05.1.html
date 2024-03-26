@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="styles/style.css" type="text/css">
+	<title>02-JS05.1</title>
+</head>
+<body>
+	<img src="images/off.png" alt="" style="width:150px">
+	<div style="display: flex; align-items: center; justify-content: center;">
+		<button onclick="on()">Turn ON</button>
+		<button onclick="off()">Turn OFF</button>
+	</div>
+
+	<script>
+		var myImage = document.querySelector('img');
+		function on()
+		{
+			myImage.setAttribute ('src', 'images/on.png');
+		}
+		function off(){
+			myImage.setAttribute ('src', 'images/off.png');
+		}
+	</script>
+</body>
+</html>

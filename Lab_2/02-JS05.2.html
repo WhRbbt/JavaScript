@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="styles/style.css" type="text/css">
+	<title>02-JS05.2</title>
+</head>
+<body>
+	<img src="images/red.png" alt="" style="width:150px">
+	
+	<script>
+		var myImage = document.querySelector('img');
+		function GreenLight() {
+			myImage.setAttribute ('src', 'images/green.png');
+			setTimeout(RedLight, 500)
+		}
+		function YellowLight(){
+			myImage.setAttribute('src', 'images/yellow.png')
+			setTimeout(GreenLight, 500)
+		}
+		function RedLight() {
+			myImage.setAttribute ('src', 'images/red.png');
+			setTimeout(YellowLight, 500)
+		}
+		RedLight()
+	</script>
+</body>
+</html>
