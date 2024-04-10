@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date and Time</title>
+    <script language="JavaScript">
+        function displayDateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var timeString = "Час: " + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+            var dateString = "Дата: " + (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear();
+            document.getElementById("time").innerHTML = timeString;
+            document.getElementById("date").innerHTML = dateString;
+        }
+    </script>
+</head>
+
+<body onLoad="displayDateTime()">
+    <p id="time"></p>
+    <p id="date"></p>
+</body>
+
+</html>

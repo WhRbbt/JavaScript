@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Array</title>
+    <script language="JavaScript">
+        function displayArray() {
+            var myArray = ["first element", "second element", "third element"];
+            var displayText = "";
+            for (var i = 0; i < myArray.length; i++) {
+                displayText += myArray[i] + "<br>";
+            }
+            document.getElementById("array").innerHTML = displayText;
+        }
+    </script>
+</head>
+
+<body onLoad="displayArray()">
+    <p id="array"></p>
+</body>
+
+</html>
