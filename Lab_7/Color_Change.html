@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зміна кольору</title>
+    <script>
+        function changeColor(elementId) {
+            var element = document.getElementById(elementId);
+            var color = element.style.color;
+            var backgroundColor = element.style.backgroundColor;
+
+            element.style.color = color === 'white' ? 'black' : 'white';
+            element.style.backgroundColor = backgroundColor === 'blue' ? 'yellow' : 'blue';
+        }
+
+        function changeColorAll() {
+            var element = document.all['secondLine'];
+            var currentColor = element.style.color;
+            var currentBackground = element.style.backgroundColor;
+
+            if (currentColor === 'white') {
+                element.style.color = 'red';
+                element.style.backgroundColor = 'white';
+            } else {
+                element.style.color = 'white';
+                element.style.backgroundColor = 'green';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2 id="firstLine" onclick="changeColor('firstLine')" style="color:black; background-color:yellow;">Доступ до
+        властивостей і методів</h2>
+    <p id="secondLine" onclick="changeColorAll()" style="color:red; background-color:white;">Колекція all</p>
+    <div id="thirdLine" onclick="changeColor('thirdLine')" style="color:black; background-color:blue;">Метод
+        getElementById()</div>
+</body>
+
+</html>
