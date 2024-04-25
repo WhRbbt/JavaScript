@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Зміна зображення та підпису</title>
+    <style>
+        img {
+            height: 400px;
+        }
+
+        #text {
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="image" src="image1.jpg" alt="Зображення" onclick="changeImage()">
+    <p id="text" onclick="changeTextColor()">Перше зображення</p>
+</body>
+
+<script>
+    function changeImage() {
+        var image = document.getElementById('image');
+        var text = document.getElementById('text');
+        if (image.src.endsWith("image1.jpg")) {
+            image.src = "image2.jpg";
+            text.innerText = "Друге зображення";
+        } else {
+            image.src = "image1.jpg";
+            text.innerText = "Перше зображення";
+        }
+    }
+
+    function changeTextColor() {
+        var text = document.getElementById('text');
+        text.style.color = text.style.color == 'blue' ? 'black' : 'blue';
+    }
+</script>
+
+</html>

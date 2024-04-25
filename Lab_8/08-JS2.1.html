@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>П'ять подій з мишкою</title>
+    <style>
+        span {
+            display: block;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>П'ять подій з мишкою</h1>
+    <span id="clickMe" onclick="changeStyle()">Клацніть на мене мишкою</span>
+    <span id="pressHoldRelease" onmousedown="highlight()" onmouseup="fade()">На цьому тексті натисніть, потримайте і
+        відпустіть ліву кнопку мишки</span>
+    <span id="hoverOverMe" onmouseover="activateHover()" onmouseout="deactivateHover()">Повільно проведіть курсором
+        мишки по цьому напису</span>
+</body>
+
+<script>
+    function changeStyle() {
+        let element = document.getElementById("clickMe");
+        const isWhite = element.style.color === "white";
+        element.style.fontSize = isWhite ? "16px" : "48px";
+        element.style.color = isWhite ? "black" : "white";
+        element.style.backgroundColor = isWhite ? "white" : "blue";
+    }
+
+    function highlight() {
+        document.getElementById("pressHoldRelease").style.backgroundColor = "green";
+    }
+
+    function fade() {
+        document.getElementById("pressHoldRelease").style.backgroundColor = "yellow";
+    }
+
+    function activateHover() {
+        let element = document.getElementById("hoverOverMe");
+        element.style.backgroundColor = element.style.backgroundColor == "blue" ? "red" : "blue";
+    }
+
+    function deactivateHover() {
+        activateHover();
+    }
+</script>
+
+</html>
