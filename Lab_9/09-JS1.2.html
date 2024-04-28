@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Тригонометричні функції</title>
+    <script>
+        function calculate() {
+            var angle = document.getElementById('angle').value;
+            var functionType = document.getElementById('functionType').value;
+            if (!angle) {
+                alert("Введіть кут");
+                return false;
+            }
+            var radians = angle * Math.PI / 180;
+            var result = eval("Math." + functionType + "(" + radians + ")");
+            var resultText = functionType + "(" + angle + "°) = " + result.toFixed(2);
+            document.getElementById('result').innerText = "Результат: " + resultText;
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Обчислення тригонометричних функцій</h2>
+    <form onsubmit="return calculate();">
+        <label for="angle">Кут в градусах:</label>
+        <input type="text" id="angle" name="angle"><br>
+        <label for="functionType">Функція:</label>
+        <select id="functionType" name="functionType">
+            <option value="sin">Синус</option>
+            <option value="cos">Косинус</option>
+            <option value="tan">Тангенс</option>
+        </select><br>
+        <input type="submit" value="Обчислити">
+        <p id="result"></p>
+    </form>
+</body>
+
+</html>
