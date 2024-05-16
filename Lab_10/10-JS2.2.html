@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Еліпс(2)</title>
+    
+    <script>
+        function drawEllipseSVG(a, b) {
+            var svgNS = "http://www.w3.org/2000/svg";
+            var container = document.getElementById("svgEllipse");
+            container.innerHTML = "";
+
+            var svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("width", a * 2);
+            svg.setAttribute("height", b * 2);
+            svg.setAttribute("role", "img");
+            svg.setAttribute("aria-label", "Ellipse");
+
+            var ellipse = document.createElementNS(svgNS, "ellipse");
+            ellipse.setAttribute("cx", a);
+            ellipse.setAttribute("cy", b);
+            ellipse.setAttribute("rx", a);
+            ellipse.setAttribute("ry", b);
+            ellipse.setAttribute("fill", "none");
+            ellipse.setAttribute("stroke", "black");
+
+            svg.appendChild(ellipse);
+            container.appendChild(svg);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="a">Велика піввісь (a): </label>
+        <input type="number" id="a" value="100">
+        <label for="b">Мала піввісь (b): </label>
+        <input type="number" id="b" value="50">
+        <button onclick="drawEllipseSVG(Number(a.value), Number(b.value))">Побудувати еліпс</button>
+    </div>
+    <div id="svgEllipse" style="margin-top: 20px;"></div>
+</body>
+
+</html>

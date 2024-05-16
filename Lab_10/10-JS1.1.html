@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Перегляд фото</title>
+    
+    <script>
+        var photo = new Array();
+        photo["nuke"] = new Image;
+        photo["nuke"].src = "nuke.jpg";
+        photo["space"] = new Image;
+        photo["space"].src = "space.jpg";
+        photo["alien"] = new Image;
+        photo["alien"].src = "alien.jpg";
+
+        function view(list) {
+            var selectedValue = list.value;
+            document.getElementById("photo").src = photo[selectedValue].src;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="photoForm">
+        <label for="photoSelect">Виберіть фото:</label>
+        <select id="photoSelect" onchange="view(this)">
+            <option value="nuke">Ядерка</option>
+            <option value="space">Космос</option>
+            <option value="alien">Прибулець</option>
+        </select>
+        <br>
+        <img id="photo" src="nuke.jpg" alt="Selected Photo" style="width: 500px; height: 500px;">
+    </form>
+</body>
+
+</html>

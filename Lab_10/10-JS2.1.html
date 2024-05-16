@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Еліпс(1)</title>
+    
+    <style>
+        .dot {
+            width: 2px;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+        }
+    </style>
+    
+    <script>
+        function drawEllipseDiv(a, b) {
+            var container = document.getElementById("divEllipse");
+            container.innerHTML = "";
+            container.style.width = (2 * a) + "px";
+            container.style.height = (2 * b) + "px";
+            for (var t = 0; t < 2 * Math.PI; t += 0.01) {
+                var x = a * Math.cos(t);
+                var y = b * Math.sin(t);
+                var dot = document.createElement("div");
+                dot.className = "dot";
+                dot.style.left = (a + x) + "px";
+                dot.style.top = (b - y) + "px";
+                container.appendChild(dot);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="a">Велика піввісь (a): </label>
+        <input type="number" id="a" value="100">
+        <label for="b">Мала піввісь (b): </label>
+        <input type="number" id="b" value="50">
+        <button onclick="drawEllipseDiv(Number(a.value), Number(b.value))">Побудувати еліпс</button>
+    </div>
+    <div id="divEllipse" style="position: relative;"></div>
+</body>
+
+</html>
