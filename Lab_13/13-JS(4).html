@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Завдання 4</title>
+    <script>
+        function deleteSelected() {
+            let select = document.getElementById("names");
+            select.remove(select.selectedIndex);
+        }
+    </script>
+</head>
+
+<body>
+    <select id="names">
+        <option>Peter</option>
+        <option>John</option>
+        <option>Alise</option>
+        <option>Alex</option>
+        <option>Iren</option>
+    </select>
+    <button onclick="deleteSelected()">Choose and Delete</button>
+</body>
+
+</html>

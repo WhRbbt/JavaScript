@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Завдання 3</title>
+    <script>
+        function changeToBlue() {
+            document.body.style.backgroundColor = "blue";
+        }
+
+        function changeToPink() {
+            document.body.style.backgroundColor = "pink";
+        }
+
+        function changeToBrown() {
+            document.body.style.backgroundColor = "brown";
+        }
+
+        function changeToWhite() {
+            document.body.style.backgroundColor = "white";
+        }
+
+        function changeToYellow() {
+            document.body.style.backgroundColor = "yellow";
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="changeToBlue()">Click to make the page blue</button>
+    <button ondblclick="changeToPink()">Double-click to make the page pink</button>
+    <button onmousedown="changeToBrown()" onmouseup="changeToWhite()">Click and hold to make the page brown</button>
+    <a href="#" onmouseenter="changeToYellow()" onmouseleave="changeToWhite()">Hover over to make page yellow</a>
+</body>
+
+</html>

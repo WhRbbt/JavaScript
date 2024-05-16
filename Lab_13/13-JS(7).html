@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Завдання 7</title>
+    <script>
+        function updateCities() {
+            let country = document.getElementById("country").value;
+            let cities = document.getElementById("cities");
+            let selectedCity = cities.value;
+            cities.innerHTML = "";
+
+            let cityList = {
+                "ger": ["Berlin", "Munich", "Frankfurt"],
+                "usa": ["New York", "Washington", "Boston", "Chicago"],
+                "ukr": ["Kyiv", "Lviv", "Odessa"]
+            };
+
+            cityList[country].forEach(city => {
+                let option = document.createElement("option");
+                option.value = city;
+                option.text = city;
+                cities.appendChild(option);
+            });
+
+            if (cityList[country].includes(selectedCity)) {
+                cities.value = selectedCity;
+            }
+
+            let selectedCountryText = document.querySelector(`#country option[value="${country}"]`).innerText;
+            let selectedCityText = cities.value;
+
+            document.querySelector("p").innerText = `${selectedCountryText}, ${selectedCityText}`;
+        }
+    </script>
+</head>
+
+<body onload="updateCities()">
+    <select name="country" id="country" onchange="updateCities()">
+        <option value="ger">Germany</option>
+        <option value="usa">USA</option>
+        <option value="ukr">Ukraine</option>
+    </select>
+    <select name="cities" id="cities" onchange="updateCities()"></select>
+    <p></p>
+</body>
+
+</html>

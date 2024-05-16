@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Завдання 6</title>
+    <script>
+        function updateSize() {
+            document.body.innerHTML = `Width: ${window.innerWidth}, Height: ${window.innerHeight}`;
+        }
+
+        window.addEventListener('resize', updateSize);
+
+        window.addEventListener('load', updateSize);
+    </script>
+</head>
+
+<body>
+    Width: 0, Height: 0
+</body>
+
+</html>

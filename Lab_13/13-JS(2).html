@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Завдання 2</title>
+    <script>
+        function changeCSS() {
+            let textElement = document.getElementById("text");
+            if (textElement.style.color === "orange") {
+                textElement.style.cssText = "";
+            } else {
+                textElement.style.cssText = "color: orange; font-size: 20px; font-family: 'Comic Sans MS';";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p id="text">I learning JavaScript events!</p>
+    <button onclick="changeCSS()">Change style!</button>
+</body>
+
+</html>
