@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Переміщення квадрата мишкою</title>
+
+    <style>
+        #container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+        }
+
+        #redSquare {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center" style="color: red">Переміщення квадрата мишкою</h1>
+    <h2 align="center">Розмістіть курсор на червоному квадраті, натисніть ліву кнопку мишки й тягніть його.</h2>
+    <div id="container">
+        <div id="redSquare"></div>
+    </div>
+    <script>
+        let flag = false;
+        let redSquare = document.getElementById('redSquare');
+        let container = document.getElementById('container');
+        let offsetX, offsetY;
+
+        function init() {
+            redSquare.onmousedown = zachvat;
+            document.onmouseup = osvobodi;
+            document.onmousemove = dragIt;
+        }
+
+        function zachvat(evt) {
+            flag = true;
+            offsetX = evt.clientX - redSquare.offsetLeft;
+            offsetY = evt.clientY - redSquare.offsetTop;
+        }
+
+        function osvobodi() {
+            flag = false;
+        }
+
+        function dragIt(evt) {
+            if (flag) {
+                let x = evt.clientX - offsetX;
+                let y = evt.clientY - offsetY;
+                if (x >= 0 && x <= container.clientWidth - redSquare.clientWidth) {
+                    redSquare.style.left = x + 'px';
+                }
+                if (y >= 0 && y <= container.clientHeight - redSquare.clientHeight) {
+                    redSquare.style.top = y + 'px';
+                }
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>

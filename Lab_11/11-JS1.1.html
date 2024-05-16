@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <title>Переміщення квадрата по колу</title>
+
+    <style>
+        #square {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="square"></div>
+    <script>
+        let square = document.getElementById('square');
+        let R = 100;
+        let angle = 0;
+        let cx = 200;
+        let cy = 200;
+
+        function moveSquare() {
+            let x = cx + R * Math.cos(angle);
+            let y = cy + R * Math.sin(angle);
+            square.style.left = x + 'px';
+            square.style.top = y + 'px';
+            angle += 0.05;
+            if (angle >= 2 * Math.PI) {
+                angle = 0;
+            }
+        }
+
+        setInterval(moveSquare, 100);
+    </script>
+</body>
+
+</html>
