@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Облік надходження товарів</title>
+    <script>
+        function isNumb(fld) {
+            var t = fld.value;
+            for (var i = 0; i < t.length; i++) {
+                var ch = t.charAt(i);
+                if ((ch < "0" || ch > "9") && (ch != ".")) {
+                    alert("Не цифра");
+                    fld.focus();
+                    fld.select();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function updateTable() {
+            var product = document.getElementById("product").value;
+            var quantity = document.getElementById("quantity").value;
+            var price = document.getElementById("price").value;
+
+            if (isNumb(document.getElementById("quantity")) && isNumb(document.getElementById("price"))) {
+                var table = document.getElementById("productTable");
+                var rowIndex;
+                for (var i = 1; i < table.rows.length - 1; i++) {
+                    if (table.rows[i].cells[0].innerHTML == product) {
+                        rowIndex = i;
+                        break;
+                    }
+                }
+
+                table.rows[rowIndex].cells[2].innerHTML = quantity;
+                table.rows[rowIndex].cells[1].innerHTML = price;
+                var cost = quantity * price;
+                table.rows[rowIndex].cells[3].innerHTML = cost.toFixed(2);
+                updateTotal();
+            }
+        }
+
+        function updateTotal() {
+            var table = document.getElementById("productTable");
+            var total = 0;
+            for (var i = 1; i < table.rows.length - 1; i++) {
+                var cost = parseFloat(table.rows[i].cells[3].innerHTML);
+                total += cost;
+            }
+            document.getElementById("total").innerHTML = total.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Облік надходження товарів</h1>
+    <table id="productTable" border="1">
+        <tr>
+            <th>Найменування товару</th>
+            <th>Ціна за одиницю</th>
+            <th>Кількість</th>
+            <th>Вартість</th>
+        </tr>
+        <tr>
+            <td>Стіл письмовий</td>
+            <td>12000</td>
+            <td>5</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>Стіл кухонний</td>
+            <td>8000</td>
+            <td>10</td>
+            <td>80000</td>
+        </tr>
+        <tr>
+            <td>Стілець</td>
+            <td>20</td>
+            <td>1200</td>
+            <td>24000</td>
+        </tr>
+        <tr>
+            <td>Шафа книжкова</td>
+            <td>14200</td>
+            <td>4</td>
+            <td>56800</td>
+        </tr>
+        <tr>
+            <td colspan="3">Загалом</td>
+            <td id="total">220800</td>
+        </tr>
+    </table>
+    <br>
+    <label>Товар:
+        <select id="product">
+            <option value="Стіл письмовий">Стіл письмовий</option>
+            <option value="Стіл кухонний">Стіл кухонний</option>
+            <option value="Стілець">Стілець</option>
+            <option value="Шафа книжкова">Шафа книжкова</option>
+        </select>
+    </label><br>
+    <label>Кількість: <input type="text" id="quantity" onchange="isNumb(this)"></label><br>
+    <label>Ціна: <input type="text" id="price" onchange="isNumb(this)"></label><br>
+    <button type="button" onclick="updateTable()">Оновити таблицю</button>
+</body>
+
+</html>

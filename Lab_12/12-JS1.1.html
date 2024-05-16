@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Тригонометричні функції</title>
+    <script>
+        function isNumb(fld) {
+            var t = fld.value;
+            for (var i = 0; i < t.length; i++) {
+                var ch = t.charAt(i);
+                if ((ch < "0" || ch > "9") && (ch != ".")) {
+                    alert("Не цифра");
+                    fld.focus();
+                    fld.select();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function generateTable() {
+            var angleStart = parseFloat(document.getElementById("angleStart").value);
+            var angleEnd = parseFloat(document.getElementById("angleEnd").value);
+            var step = parseFloat(document.getElementById("step").value);
+            var func = document.getElementById("func").value;
+
+            if (!func) {
+                alert("Оберіть функцію.");
+                return;
+            }
+
+            if (isNumb(document.getElementById("angleStart")) && isNumb(document.getElementById("angleEnd")) && isNumb(
+                    document.getElementById("step"))) {
+                var table = "<table border='1'><tr><th>Кут в градусах</th><th>Кут в радіанах</th><th>" + func +
+                    "</th></tr>";
+                for (var angle = angleStart; angle <= angleEnd; angle += step) {
+                    var radian = angle * Math.PI / 180;
+                    var funcValue = Math[func](radian);
+                    table += "<tr><td>" + angle + "</td><td>" + radian.toFixed(4) + "</td><td>" + funcValue.toFixed(4) +
+                        "</td></tr>";
+                }
+                table += "</table>";
+                document.getElementById("result").innerHTML = table;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Тригонометричні функції</h1>
+    <form>
+        <label>Функція:
+            <select id="func">
+                <option value="" disabled selected>Оберіть функцію</option>
+                <option value="sin">sin</option>
+                <option value="cos">cos</option>
+                <option value="tan">tan</option>
+            </select>
+        </label><br>
+        <label>Початковий кут: <input type="text" id="angleStart" onchange="isNumb(this)"></label><br>
+        <label>Кінцевий кут: <input type="text" id="angleEnd" onchange="isNumb(this)"></label><br>
+        <label>Крок: <input type="text" id="step" onchange="isNumb(this)"></label><br>
+        <button type="button" onclick="generateTable()">Обчислити</button>
+    </form>
+
+    <h2>Результат</h2>
+    <div id="result"></div>
+</body>
+
+</html>
